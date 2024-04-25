@@ -22,13 +22,13 @@ This command will install spec2go globally on your machine, allowing you to run 
 ## Quick Start Guide
 
 ### Setting Up Your Project
-Ensure your OpenAPI 3.0 YAML files are ready. For instance, you might have an API specification for a ledger component within a financial application located at ./midaz/components/ledger/api/v1.yml.
+Ensure your OpenAPI 3.0 YAML files are ready. For instance, you might have an API specification for a ledger component within a financial application located at ./path/to/your/openai/file.yml.
 
 ### Generating Code
 To generate Golang code using Spec2Go, use the following syntax:
 
 ```sh
-spec2go generate -i ./midaz/components/ledger/api/v1.yml -o .
+spec2go generate -i ./path/to/your/openai/file.yml -o .
 ```
 
 This command will instruct Spec2Go to:
