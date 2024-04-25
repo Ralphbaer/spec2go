@@ -1,5 +1,4 @@
-+++README.md+++
-# Spec2Go - Go Code Generator from OpenAPI Specifications
+# Spec2Go
 
 Welcome to **Spec2Go**! This powerful command-line tool automates the creation of Golang applications directly from OpenAPI 3.0 and .mustache specifications. With its default setting to generate code following the principles of Hexagonal Architecture, Spec2Go ensures high modularity and ease of testing, offering a solid foundation for building robust applications.
 
