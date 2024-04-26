@@ -19,7 +19,6 @@ import (
 func PrepareData(spec *openapi3.T) *model.TemplateData {
 	apis := make([]model.API, 0)
 
-	// Use reflection to access the private map 'm' from spec.Paths
 	pathsValue := reflect.ValueOf(spec.Paths)
 	mValue := reflect.Indirect(pathsValue).FieldByName("m")
 
