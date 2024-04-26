@@ -1,5 +1,5 @@
 build:
-	go build -o spec2go ./cmd
+	go build -o ./.bin/spec2go ./cmd
 
 help:
 	@echo "Management commands"
@@ -20,14 +20,14 @@ help:
 test:
 	go test -v ./... ./...
 
-#lint:
-#	./make.sh "lint"
+lint:
+	./shell/make.sh "lint"
 
-#format:
-#	./make.sh "format"
+format:
+	./shell/make.sh "format"
 
-#setup-git-hooks:
-#	./make.sh "setupGitHooks"
+setup-git-hooks:
+	./shell/make.sh "setupGitHooks"
 
 tidy:
 	go mod tidy
