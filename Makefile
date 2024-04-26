@@ -1,6 +1,9 @@
 build:
 	go build -o ./.bin/spec2go ./cmd
 
+foo-bar:
+	./.bin/spec2go ./v1.yml
+
 help:
 	@echo "Management commands"
 	@echo ""
