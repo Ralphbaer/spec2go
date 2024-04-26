@@ -4,7 +4,7 @@ go 1.21.3
 
 require github.com/getkin/kin-openapi v0.124.0
 
-require github.com/cbroglie/mustache v1.4.0 // indirect
+require github.com/cbroglie/mustache v1.4.0
 
 require (
 	github.com/go-openapi/jsonpointer v0.20.2 // indirect
