@@ -2,26 +2,19 @@
 package main
 
 import (
-	"log"
 	"net/http"
-
-	// WARNING!
-	// Change this to a fully-qualified import path
-	// once you place this file into your project.
-	// For example,
-	//
-	//    sw "github.com/myname/myrepo/{{sourceFolder}}"
-	//
-	{{packageName}} "./{{sourceFolder}}"
+	"log"
 )
 
 func main() {
-	log.Printf("Server started")
-{{#apiInfo}}{{#apis}}
-	{{classname}}Service := {{packageName}}.New{{classname}}Service()
-	{{classname}}Controller := {{packageName}}.New{{classname}}Controller({{classname}}Service)
-{{/apis}}{{/apiInfo}}
-	router := {{packageName}}.NewRouter({{#apiInfo}}{{#apis}}{{classname}}Controller{{#hasMore}}, {{/hasMore}}{{/apis}}{{/apiInfo}})
+	log.Println("Server starting on port 8080...")
 
-	log.Fatal(http.ListenAndServe(":{{serverPort}}", router))
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, World!"))
+	})
+
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		log.Fatal("Error starting server: ", err)
+	}
 }
