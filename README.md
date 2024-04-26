@@ -1,12 +1,18 @@
 # Spec2Go
 
-Welcome to **Spec2Go**! This powerful command-line tool automates the creation of Golang applications directly from OpenAPI 3.0 and .mustache specifications. With its default setting to generate code following the principles of Hexagonal Architecture, Spec2Go ensures high modularity and ease of testing, offering a solid foundation for building robust applications.
+**Status: 🚧 Work in Progress (WIP) 🚧**
+
+spec2go is currently under development. Features may be incomplete and documentation is subject to change. Use in production environments is not recommended until the official release.
+
+## What is Spec2Go?
+
+**Spec2Go** is powerful command-line tool automates the creation of Golang applications directly from OpenAPI 3.0 and Go pkg.go.dev/text/template specifications. With its default setting to generate code following the principles of Hexagonal Architecture, Spec2Go ensures high modularity and ease of testing, offering a solid foundation for building robust applications.
 
 ## Key Features
 
 - **Direct Integration with OpenAPI 3.0**: Convert your OpenAPI 3.0 specifications into well-structured Golang code seamlessly.
 - **Hexagonal Architecture**: Begin your projects with an architecture that supports and enhances maintainability and scalability.
-- **Customizable Code Generation**: Utilize Mustache templates to shape the output code to better fit your project requirements.
+- **Customizable Code Generation**: Utilize Go pkg.go.dev/text/template templates to shape the output code to better fit your project requirements.
 - **CLI-Based Utility**: Run as a standalone command-line tool, allowing integration into any part of your development pipeline.
 
 ## Installation
@@ -35,40 +41,37 @@ This command will instruct Spec2Go to:
 
 - -i (--input): Path to your OpenAPI specification file.
 - -o (--output): Output directory where the generated Golang code will be placed.
-Customizing Output with Templates
-To customize the output, you can modify or create new Mustache templates. 
 
-A simple Mustache template might look like this:
+### Customizing Output with Templates
+To customize the output, you can modify or create new Go tmpl templates.
+
+A simple Go tmpl template might look like this:
 
 ```
-
-{{>partial_header}}
+{{define "main"}}
 package main
 
 import (
 	"log"
 	"net/http"
-
 	// WARNING!
 	// Change this to a fully-qualified import path
 	// once you place this file into your project.
 	// For example,
 	//
-	//    sw "github.com/myname/myrepo/{{sourceFolder}}"
+	//    sw "github.com/myname/myrepo/{{.SourceFolder}}"
 	//
-	{{packageName}} "./{{sourceFolder}}"
+	{{.PackageName}} "./{{.SourceFolder}}"
 )
 
 func main() {
-	log.Printf("Server started")
-{{#apiInfo}}{{#apis}}
-	{{classname}}Service := {{packageName}}.New{{classname}}Service()
-	{{classname}}Controller := {{packageName}}.New{{classname}}Controller({{classname}}Service)
-{{/apis}}{{/apiInfo}}
-	router := {{packageName}}.NewRouter({{#apiInfo}}{{#apis}}{{classname}}Controller{{#hasMore}}, {{/hasMore}}{{/apis}}{{/apiInfo}})
-
-	log.Fatal(http.ListenAndServe(":{{serverPort}}", router))
+	log.Println("Server started on :3000")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, World!"))
+	})
+	log.Fatal(http.ListenAndServe(":3000", nil))
 }
+{{end}}
 ```
 
 Adjust the template to include any specific configurations or coding standards your project requires.
