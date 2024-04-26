@@ -1,0 +1,27 @@
+{{>partial_header}}
+package main
+
+import (
+	"log"
+	"net/http"
+
+	// WARNING!
+	// Change this to a fully-qualified import path
+	// once you place this file into your project.
+	// For example,
+	//
+	//    sw "github.com/myname/myrepo/{{sourceFolder}}"
+	//
+	{{packageName}} "./{{sourceFolder}}"
+)
+
+func main() {
+	log.Printf("Server started")
+{{#apiInfo}}{{#apis}}
+	{{classname}}Service := {{packageName}}.New{{classname}}Service()
+	{{classname}}Controller := {{packageName}}.New{{classname}}Controller({{classname}}Service)
+{{/apis}}{{/apiInfo}}
+	router := {{packageName}}.NewRouter({{#apiInfo}}{{#apis}}{{classname}}Controller{{#hasMore}}, {{/hasMore}}{{/apis}}{{/apiInfo}})
+
+	log.Fatal(http.ListenAndServe(":{{serverPort}}", router))
+}
