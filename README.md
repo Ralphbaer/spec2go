@@ -1,8 +1,6 @@
-# Spec2Go
+# Spec2Go - 🚧 Work in Progress (WIP) 🚧
 
-**Status: 🚧 Work in Progress (WIP) 🚧**
-
-spec2go is currently under development. Features may be incomplete and documentation is subject to change. Use in production environments is not recommended until the official release.
+**spec2go is currently under development. Features may be incomplete and documentation is subject to change. Use in production environments is not recommended until the official release.**
 
 ## What is Spec2Go?
 
