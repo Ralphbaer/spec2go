@@ -14,7 +14,7 @@ Welcome to **Spec2Go**! This powerful command-line tool automates the creation o
 Spec2Go is easy to install with Go. Ensure you have Go installed on your system (version 1.16 or later is recommended). You can install Spec2Go globally using the following command:
 
 ```sh
-go install github.com/yourusername/spec2go@latest
+go install github.com/Ralphbaer/spec2go@latest
 ```
 
 This command will install spec2go globally on your machine, allowing you to run it from anywhere within your terminal.
